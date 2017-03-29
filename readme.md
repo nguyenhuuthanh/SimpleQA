@@ -6,11 +6,50 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+
 ## SimpleQA API
 
 - [API in Laravel](https://laracasts.com/series/incremental-api-development)
 - [Laravel Authentication](https://laracasts.com/series/laravel-authentication-techniques)
 - [Advanced Eloquent](https://laracasts.com/series/advanced-eloquent)
+
+# Setup
+## Run and develop in isolated environment
+1. Install [GIT](https://git-scm.com/downloads) and [Composer](https://getcomposer.org/download/)
+2. Checkout project [https://github.com/nguyenhuuthanh/SimpleQA](https://github.com/nguyenhuuthanh/SimpleQA)
+
+## Develop with full stack locally
+Requirements:
+* [PHP](https://php.net) 7.0+
+* [MySQL](https://www.mysql.org) 5.7
+
+Install all required software from above list, then run:
+
+```
+cd simpleQA
+php composer.phar install
+```
+
+Create Laravel's configuration file:
+
+```
+cp .env.example .env
+```
+
+Create MySQL database and set proper DB_* variable in **.env** file,
+then create DB structure for current application version
+(or update existing DB structure to current version):
+
+```
+php artisan migrate
+```
+
+Fill in database with some random values for testing:
+
+```
+php artisan db:seed
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
