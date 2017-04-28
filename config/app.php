@@ -176,6 +176,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+         * https://laravel.com/docs/5.4/passport#installation
+         */
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
