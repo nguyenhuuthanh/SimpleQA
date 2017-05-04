@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/chat', function () {
+    return view('chat');
+});
+Route::post('/login', 'ApiLoginController@authenticated');
