@@ -10,6 +10,7 @@ use App\Repositories\TopicRepository;
 use App\Topic;
 use App\Transformers\TopicTransformer;
 use Dingo\Api\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TopicController extends BaseController
 {
@@ -47,8 +48,9 @@ class TopicController extends BaseController
      */
     public function update(int $id, TopicUpdateRequest $request)
     {
-        $this->topicRepository->update($request->all(), $id);
-        return $this->success(null, 'Update success');
+        $topic = $this->find($id);
+        $this->topicRepository->update($request->all(), $topic->id);
+        return $this->success(null, trans('topic.updated'));
     }
 
     /**
@@ -70,7 +72,35 @@ class TopicController extends BaseController
      */
     public function show(int $id)
     {
+        return $this->success($this->find($id));
+    }
+
+    /**
+     *
+     * @param int $id
+     *
+     * @return \Dingo\Api\Http\Response
+     */
+    public function destroy(int $id)
+    {
+        $topic = $this->find($id);
+        $this->topicRepository->delete($topic->id);
+        return $this->success(null, trans('topic.deleted'));
+    }
+
+    /**
+     * get topic object
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+    protected function find(int $id)
+    {
         $topic = $this->topicRepository->find($id);
-        return $this->success($topic);
+        if (!$topic) {
+            throw new NotFoundHttpException(trans('topic.not_found'));
+        }
+        return $topic;
     }
 }
