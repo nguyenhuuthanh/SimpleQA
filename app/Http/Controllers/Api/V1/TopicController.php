@@ -8,7 +8,7 @@ use App\Http\Requests\Api\TopicStoreRequest;
 use App\Http\Requests\Api\TopicUpdateRequest;
 use App\Repositories\TopicRepository;
 use App\Topic;
-use App\Transformers\TopicTransformer;
+use App\Transformers\BaseTransformer;
 use Dingo\Api\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -62,7 +62,7 @@ class TopicController extends BaseController
     {
         $limit = $this->getLimit($request);
         $paginator = $this->topicRepository->paginate($limit);
-        return $this->response->paginator($paginator, new TopicTransformer());
+        return $this->response->paginator($paginator, new BaseTransformer());
     }
 
     /**

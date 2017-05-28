@@ -9,6 +9,8 @@ use Bosnadev\Repositories\Eloquent\Repository;
 
 class UserRepository extends Repository
 {
+    const DEFAULT_AVATAR = 'https://www.gravatar.com/avatar/00000000000000000000000000000000';
+
     public function model()
     {
         return User::class;
@@ -16,21 +18,19 @@ class UserRepository extends Repository
 
     public function create(array $data)
     {
-        if ($data['password'] ?? false) {
-            $data['password'] = bcrypt($data['password']);
-        }
-        if (empty($data['avatar'])) {
-            $data['avatar'] = 'https://www.gravatar.com/avatar/00000000000000000000000000000000';
-        }
-        $data['is_activated'] = true;
-        return parent::create($data);
+        $this->model->fill($data)
+            ->setPassword($data['password'] ?? false)
+            ->setAvatar($data['avatar'] ?? static::DEFAULT_AVATAR)
+            ->setAttribute('is_activated', true)
+            ->save();
+        return $this->model;
     }
 
     public function update(array $data, $id, $attribute = "id")
     {
-        if ($data['password'] ?? false) {
-            $data['password'] = bcrypt($data['password']);
-        }
-        return parent::update($data, $id, $attribute);
+        return $this->model->where($attribute, '=', $id)
+            ->setPassword($data['password'] ?? false)
+            ->setAvatar($data['avatar'] ?? false)
+            ->update($data);
     }
 }
