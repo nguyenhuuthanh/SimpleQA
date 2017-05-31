@@ -44,7 +44,63 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\" : \"joe@mail.com\",\n\t\"password\" : \"123456\"\n}"
+							"raw": "{\n  \"email\" : \"joe2@mail.com\",\n  \"password\" : \"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question",
+			"description": "",
+			"item": [
+				{
+					"name": "create question",
+					"request": {
+						"url": "{{host}}/api/question",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\" : \"question 1?\",\n  \"content\" : \"question content\",\n  \"status\" : \"draft\",\n  \"topic_id\" : 2\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "list question",
+					"request": {
+						"url": "{{host}}/api/question?page=1&limit=2",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
@@ -75,7 +131,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"php\",\n\t\"description\": \"php topic\"\n}"
+							"raw": "{\n  \"name\" : \"php\",\n  \"description\": \"php topic\"\n}"
 						},
 						"description": ""
 					},
@@ -100,7 +156,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"php\",\n\t\"description\": \"php topic\"\n}"
+							"raw": "{\n  \"name\" : \"php\",\n  \"description\": \"php topic\"\n}"
 						},
 						"description": ""
 					},
@@ -125,7 +181,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"php\",\n\t\"description\": \"php topic\"\n}"
+							"raw": "{\n  \"name\" : \"php\",\n  \"description\": \"php topic\"\n}"
 						},
 						"description": ""
 					},
@@ -150,7 +206,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"php\",\n\t\"description\": \"php topic\"\n}"
+							"raw": "{\n  \"name\" : \"php\",\n  \"description\": \"php topic\"\n}"
 						},
 						"description": ""
 					},
@@ -175,7 +231,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"php\",\n\t\"description\": \"php topic\"\n}"
+							"raw": "{\n  \"name\" : \"php\",\n  \"description\": \"php topic\"\n}"
 						},
 						"description": ""
 					},
@@ -206,7 +262,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\" : \"thanh.nguyen@saritasa.com\",\n\t\"password\" : \"123456\"\n}"
+							"raw": "{\n  \"email\" : \"thanh.nguyen@saritasa.com\",\n  \"password\" : \"123456\"\n}"
 						},
 						"description": ""
 					},
@@ -232,7 +288,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\" : \"Joe joe\",\n\t\"email\" : \"joe@mail.com\",\n\t\"password\" : \"123456\",\n\t\"gender\" : 1\n}"
+							"raw": "{\n  \"name\" : \"Joe1\",\n  \"email\" : \"joe2@mail.com\",\n  \"password\" : \"123456\",\n  \"gender\" : 1\n}"
 						},
 						"description": ""
 					},
