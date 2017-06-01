@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\QuestionController;
 use App\Http\Controllers\Api\V1\TopicController;
+use App\Http\Controllers\Api\V1\AnswerController;
 use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Router;
@@ -37,5 +38,6 @@ $api->version('v1', function ($api) {
 
         $api->resource('topic', TopicController::class);
         $api->resource('question', QuestionController::class);
+        $api->resource('answer', AnswerController::class);
     });
 });

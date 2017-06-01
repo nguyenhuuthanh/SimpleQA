@@ -29,5 +29,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Answer extends Model
 {
-    //
+    protected $fillable = [
+        'answer',
+        'status',
+        'question_id',
+        'answer_parent'
+    ];
 }
