@@ -8,7 +8,9 @@ use App\Http\Requests\Api\AnswerStoreRequest;
 use App\Http\Requests\Api\AnswerUpdateRequest;
 use App\Repositories\AnswerRepository;
 use App\Transformers\BaseTransformer;
+use Dingo\Api\Exception\UpdateResourceFailedException;
 use Dingo\Api\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AnswerController extends BaseController
 {
@@ -69,7 +71,10 @@ class AnswerController extends BaseController
     public function destroy(int $id)
     {
         $answer = $this->find($id);
-        $this->answerRepository->delete($answer->id);
+        //$this->answerRepository->delete($answer->id);
+        if (!$answer->delete()) {
+            throw new UpdateResourceFailedException('Could not update');
+        }
         return $this->success(null, trans('answer.deleted'));
     }
 
