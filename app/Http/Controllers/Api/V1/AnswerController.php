@@ -71,13 +71,16 @@ class AnswerController extends BaseController
     public function destroy(int $id)
     {
         $answer = $this->find($id);
-        //$this->answerRepository->delete($answer->id);
         if (!$answer->delete()) {
             throw new UpdateResourceFailedException('Could not update');
         }
         return $this->success(null, trans('answer.deleted'));
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     protected function find(int $id)
     {
         $answer = $this->answerRepository->find($id);
