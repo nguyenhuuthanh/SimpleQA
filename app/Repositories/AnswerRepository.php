@@ -4,7 +4,7 @@
 namespace App\Repositories;
 
 
-use App\Answer;
+use App\Models\Answer;
 use App\User;
 use Bosnadev\Repositories\Eloquent\Repository;
 
